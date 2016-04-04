@@ -1,0 +1,171 @@
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+// Breakpoints
+break-1 = 'only screen and (min-width: 45em)'
+break-2 = 'only screen and (min-width: 60em)'
+
+// Colors
+text-color = #59514f
+bg-color = rgb(234,234,234)
+beige = #f0ece9
+brown = #d1c6b8
+blue = #5badd6
+orange = #d17c15
+
+*
+    box-sizing border-box
+
+html
+    font-family Courier, Courier New, monospace
+    font-size 100%
+    line-height 1.5
+    color text-color
+    background-color bg-color
+    height 100%
+
+body
+    height 100%
+
+main
+    margin 0 auto
+    max-width 750px
+    height 100%
+    > section
+        height 100%
+    @media break-1
+        padding 3rem 0
+
+article header h2
+    line-height 1.2
+
+article header span
+    display inline-block
+    line-height 1.2
+    float right
+    text-transform uppercase
+    padding 0 .2em
+    margin .4rem .6rem
+    color beige
+    background-color text-color
+
+
+/* ==========================================================================
+   Slider
+   ========================================================================== */
+
+.slider
+    clearfix()
+    padding 0
+    margin 0
+    list-style none
+    transition left .3s ease-out
+    position relative
+    left 0
+    height 100%
+    > div
+        float left
+        padding 0 1rem
+        height 100%
+        overflow-y scroll
+
+.slider-container
+    position relative
+    padding-top 4rem
+    height 100%
+    @media break-1
+        margin 0 6rem
+
+.slider-wrapper
+    position relative
+    overflow-x hidden
+    overflow-y scroll
+    width 100%
+    height 100%
+
+.slider-controls-wrapper
+    width 100%
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+
+.slider-paging
+    position relative
+    width 100%
+    height 4rem
+    overflow-x scroll
+    overflow-y hidden
+    text-transform uppercase
+    line-height .9
+    font-size .9rem
+
+.slider-paging ul
+    clearfix()
+    padding 0
+    margin 0
+    list-style none
+    height 100%
+    background-color brown
+    li
+        display table
+        float left
+        width 42%
+        height 100%
+
+.slider-paging a
+    display table-cell
+    padding .2rem .3rem
+    width 100%
+    height 100%
+    text-decoration none
+    color text-color
+    border-width 3px
+    border-style solid
+    border-color alpha(black, .1)
+    vertical-align bottom
+    &[aria-selected='true']
+        border-color orange
+    @media break-1
+        border-width 6px
+        &:focus, &:hover
+            background-color alpha(white, .2)
+
+.slider-controls
+    display none
+    @media break-1
+        display block
+        position absolute
+        top 50%
+        left 50%
+        width 100%
+        max-width 750px
+        transform translateX(-50%)
+
+.slider-controls button
+    display none
+    @media break-1
+        display inline-block
+        border 0
+        padding 0
+        position absolute
+        top 0
+        left -5rem
+        width 3rem
+        height 3rem
+        transform translateY(-50%)
+        background-color transparent
+        background-image svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="#59514f" d="M578.662 346.93c-10.035-10.085-26.368-10.085-36.352 0L398.592 493.62c-10.035 10.188-10.035 26.623 0 36.71L542.31 676.965c9.984 10.19 26.317 10.138 36.352 0 10.035-10.086 10.035-26.522 0-36.71L460.8 512l117.862-128.307c10.035-10.138 10.035-26.522 0-36.762zM512 20.48C240.538 20.48 20.48 240.538 20.48 512c0 271.514 220.058 491.52 491.52 491.52S1003.52 783.514 1003.52 512c0-271.462-220.058-491.52-491.52-491.52zm0 919.245C275.712 939.725 84.275 748.237 84.275 512S275.712 84.275 512 84.275c236.186 0 427.725 191.488 427.725 427.725S748.185 939.725 512 939.725z"/></svg>')
+        background-repeat no-repeat
+        &.next
+            background-image svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="#59514f" d="M563.2 512l-117.862-128.307c-10.035-10.138-10.035-26.573 0-36.762 10.035-10.086 26.368-10.086 36.352 0l143.718 146.637c10.035 10.189 10.035 26.624 0 36.71l-143.718 146.637c-9.984 10.189-26.317 10.138-36.352 0-10.035-10.086-10.035-26.522 0-36.71l117.862-128.205zM512 20.48c271.462 0 491.52 220.058 491.52 491.52 0 271.514-220.058 491.52-491.52 491.52s-491.52-220.006-491.52-491.52c0-271.462 220.058-491.52 491.52-491.52zM512 939.725c236.186 0 427.725-191.488 427.725-427.725s-191.539-427.725-427.725-427.725c-236.288 0-427.725 191.488-427.725 427.725-0.051 236.237 191.437 427.725 427.725 427.725z"/></svg>')
+            left auto
+            right -5rem
+        &:focus, &:hover
+            background-image svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="#d17c15" d="M578.662 346.93c-10.035-10.085-26.368-10.085-36.352 0L398.592 493.62c-10.035 10.188-10.035 26.623 0 36.71L542.31 676.965c9.984 10.19 26.317 10.138 36.352 0 10.035-10.086 10.035-26.522 0-36.71L460.8 512l117.862-128.307c10.035-10.138 10.035-26.522 0-36.762zM512 20.48C240.538 20.48 20.48 240.538 20.48 512c0 271.514 220.058 491.52 491.52 491.52S1003.52 783.514 1003.52 512c0-271.462-220.058-491.52-491.52-491.52zm0 919.245C275.712 939.725 84.275 748.237 84.275 512S275.712 84.275 512 84.275c236.186 0 427.725 191.488 427.725 427.725S748.185 939.725 512 939.725z"/></svg>')
+            &.next
+                background-image svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="#d17c15" d="M563.2 512l-117.862-128.307c-10.035-10.138-10.035-26.573 0-36.762 10.035-10.086 26.368-10.086 36.352 0l143.718 146.637c10.035 10.189 10.035 26.624 0 36.71l-143.718 146.637c-9.984 10.189-26.317 10.138-36.352 0-10.035-10.086-10.035-26.522 0-36.71l117.862-128.205zM512 20.48c271.462 0 491.52 220.058 491.52 491.52 0 271.514-220.058 491.52-491.52 491.52s-491.52-220.006-491.52-491.52c0-271.462 220.058-491.52 491.52-491.52zM512 939.725c236.186 0 427.725-191.488 427.725-427.725s-191.539-427.725-427.725-427.725c-236.288 0-427.725 191.488-427.725 427.725-0.051 236.237 191.437 427.725 427.725 427.725z"/></svg>')
+        span
+            visuallyhidden()
